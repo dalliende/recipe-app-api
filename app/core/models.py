@@ -92,7 +92,7 @@ class Recipe(models.Model):
         max_length=255,
         blank=True,
     )
-    Ingredients = models.ManyToManyField(
+    ingredients = models.ManyToManyField(
         Ingredient,
     )
     tags = models.ManyToManyField(
