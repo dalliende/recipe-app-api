@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-from app.local_settings import LOCAL_DATABASES
+# from app.local_settings import LOCAL_DATABASES
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -78,17 +78,26 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': LOCAL_DATABASES['default'].get('ENGINE'),
+#         'NAME': LOCAL_DATABASES['default'].get('NAME'),
+#         'USER':LOCAL_DATABASES['default'].get('USER'),
+#         'PASSWORD':LOCAL_DATABASES['default'].get('PASSWORD'),
+#         'HOST': LOCAL_DATABASES['default'].get('HOST'),
+#         'PORT':LOCAL_DATABASES['default'].get('PORT'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': LOCAL_DATABASES['default'].get('ENGINE'),
-        'NAME': LOCAL_DATABASES['default'].get('NAME'),
-        'USER':LOCAL_DATABASES['default'].get('USER'),
-        'PASSWORD':LOCAL_DATABASES['default'].get('PASSWORD'),
-        'HOST': LOCAL_DATABASES['default'].get('HOST'),
-        'PORT':LOCAL_DATABASES['default'].get('PORT'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.environ.get('DB_HOST'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

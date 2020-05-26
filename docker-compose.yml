@@ -16,13 +16,12 @@ services:
       - DB_HOST=db
       - DB_NAME=app
       - DB_USER=postgres
-      - DB_PASS=localpassword
+      - DB_PASS=supersecretpassword
     depends_on:
       - db
-
   db:
     image: postgres:10-alpine
     environment:
       - POSTGRES_DB=app
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=localpassword
+      - POSTGRES_PASSWORD=supersecretpassword
